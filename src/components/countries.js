@@ -6,6 +6,7 @@ import Data from "./data.json";
 const Countries = () => {
     const { isDarkTheme } = useOutletContext()
     const [data, setData] = useState( Data );
+    const [searchTerm, setSearchTerm] = useState('');
     const [ searchParams, setSearchParams] = useSearchParams();
 
 
@@ -14,12 +15,17 @@ const Countries = () => {
     const ThemeColor = {
         color: isDarkTheme ? "#111517" : "#ffffff"
     }
-
-
+    
+    function handleSearchCountry(e) {
+        setSearchTerm(e.target.value)
+        const filteredSet = data.filter(country => country.name.toLowerCase().includes(searchTerm.toLowerCase()));
+        setData(filteredSet);
+    }
+    
     const filteredRegionArr = regionFilter ? 
     data.filter( country => country.region === regionFilter):
     data
-    
+     
     const cardArr = filteredRegionArr.map( (country) => {
         return (
             <Link className="card" key={country.name} to={`/details/${country.name}` }>
@@ -36,17 +42,15 @@ const Countries = () => {
         )
     })
 
-    function handleSearchCountry(event) {
-       data.map( ele => {
-        if(event.target.value === ele.name) {
-            setData(prevState => prevState.filter( ele => ele.name === event.target.value))
-        }
-       })
-    }
 
     return ( 
         <div className="countries-comp">
-            <input type="text" placeholder="Search..." className="search-input" onChange={handleSearchCountry}/>
+            <input type="text" 
+                placeholder="Search..." 
+                className="search-input" 
+                value={searchTerm}
+                onChange={handleSearchCountry}
+            />
           <div className="buttons-container" >
             <button
             style={{
