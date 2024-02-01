@@ -43,7 +43,7 @@ const Countries = () => {
         }
        })
     }
-    
+
     return ( 
         <div className="countries-comp">
             <input type="text" placeholder="Search..." className="search-input" onChange={handleSearchCountry}/>
@@ -55,6 +55,7 @@ const Countries = () => {
                 border: isDarkTheme ? "black" : "#2b3945",
                 boxShadow: "2px 0px 5px 0px rgba(0,0,0,0.75)"
                 }}
+            
             onClick={() => setSearchParams({})}
             >All Countries</button>
 
@@ -86,6 +87,7 @@ const Countries = () => {
                 boxShadow: "2px 0px 5px 0px rgba(0,0,0,0.75)"
                 }}
             onClick={() => setSearchParams({region: "Americas"})}
+            className={`${regionFilter === "America"} ? .active-button : null`}
             >America</button>
 
             <button

@@ -35,11 +35,11 @@ body {
 }
 
 .search-input {
-    width: 100%;
+    width: 98%;
     padding: 20px;
     border: solid 1px;
     border-radius: 5px;
-    /* margin: 10px; */
+    margin: 10px;
     font-size: 20px;
     font-weight: bolder;
     text-align: center;
@@ -54,8 +54,11 @@ body {
     padding: 10px;
     border: solid 1px;
     border-radius: 10px;
-    background-color: #ffffff;
     cursor: pointer;
+}
+
+button:hover {
+    color: aqua;
 }
 
 .flag {
@@ -177,6 +180,8 @@ a {
         margin-right: 5rem;
     }
  }
+
+ 
 
 
 
